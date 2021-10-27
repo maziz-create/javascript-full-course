@@ -8,3 +8,9 @@
  * 'error' id'sine sahip olan p etiketine
  * 'Something went wrong, please try again' ifadelerini yazdır.
  */
+
+let errorText = document.getElementById('error');
+
+const displayError = () => {
+    errorText.textContent = 'Something went wrong, please try again';
+}
