@@ -19,6 +19,9 @@ const increment = () => {
 
 const save = () => {
     localStorage.setItem('count', count);
-    saveEl.innerHTML += count + " - ";
+    saveEl.innerHTML += !localStorage.getItem('previousEntries')
+        ? count
+        : " - " + count;
+
     localStorage.setItem('previousEntries', saveEl.innerHTML);
 }
