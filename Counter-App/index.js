@@ -9,12 +9,12 @@ let previousEntries = !localStorage.getItem('previousEntries')
     ? 'Previous entries: '
     : localStorage.getItem('previousEntries');
 
-countEl.innerText = count;
-saveEl.innerText = previousEntries;
+countEl.textContent = count;
+saveEl.textContent = previousEntries;
 
 const increment = () => {
     count++;
-    countEl.innerText = count;
+    countEl.textContent = count;
 }
 
 const save = () => {
