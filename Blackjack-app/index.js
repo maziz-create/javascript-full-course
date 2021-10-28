@@ -8,6 +8,8 @@ let message = ""; //message for user
 let hasBlackJack = false; //he has not blackjack
 let isAlive = true; //he is alive
 
+let messageEl = document.getElementById('message-el');
+
 const startGame = () => {
     let firstCard = generateNumberBetween2and11();
     let secondCard = generateNumberBetween2and11();
@@ -22,4 +24,5 @@ const startGame = () => {
         message = "You're out of the game! 😔";
         isAlive = false; //he is dead
     }
+    messageEl.textContent = message === "" ? "Want to play a round?" : message;
 }
