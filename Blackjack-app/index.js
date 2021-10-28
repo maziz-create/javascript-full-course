@@ -10,6 +10,7 @@ let isAlive = true; //he is alive
 
 let messageEl = document.getElementById('message-el');
 let sumEl = document.getElementById('sum-el');
+let cardsEl = document.getElementById('cards-el');
 
 const startGame = () => {
     let firstCard = generateNumberBetween2and11();
@@ -27,4 +28,5 @@ const startGame = () => {
     }
     messageEl.textContent = message === "" ? "Want to play a round?" : message;
     sumEl.textContent = sum ? "Sum: " + sum : "Sum:"
+    cardsEl.textContent = firstCard ? `Cards: ${firstCard} ${secondCard}` : "Cards";
 }
