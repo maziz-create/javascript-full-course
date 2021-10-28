@@ -11,3 +11,12 @@ h1 {
     color: goldenrod;
     font-style: italic;
 }
+
+button {
+    border: none;
+    width: 150px;
+    height: 30px;
+    color: #016f32;
+    background-color: goldenrod;
+    font-weight: bold;
+}
