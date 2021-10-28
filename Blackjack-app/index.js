@@ -9,6 +9,7 @@ let hasBlackJack = false; //he has not blackjack
 let isAlive = true; //he is alive
 
 let messageEl = document.getElementById('message-el');
+let sumEl = document.getElementById('sum-el');
 
 const startGame = () => {
     let firstCard = generateNumberBetween2and11();
@@ -25,4 +26,5 @@ const startGame = () => {
         isAlive = false; //he is dead
     }
     messageEl.textContent = message === "" ? "Want to play a round?" : message;
+    sumEl.textContent = sum ? "Sum: " + sum : "Sum:"
 }
