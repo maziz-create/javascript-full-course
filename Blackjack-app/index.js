@@ -25,7 +25,7 @@ const renderGame = (maybeItIsCard) => {
     if (maybeItIsCard === undefined) {
         sum = firstCard + secondCard;
         cardsEl.textContent = firstCard ? `Cards: ${firstCard} ${secondCard}` : "Cards";
-    } else if (maybeItIsCard < 36) {
+    } else {
         sum += maybeItIsCard;
     }
 
