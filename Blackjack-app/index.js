@@ -12,10 +12,12 @@ let messageEl = document.getElementById('message-el');
 let sumEl = document.getElementById('sum-el');
 let cardsEl = document.getElementById('cards-el');
 
+let firstCard, secondCard, sum;
+
 const startGame = () => {
-    let firstCard = generateNumberBetween2and11();
-    let secondCard = generateNumberBetween2and11();
-    let sum = firstCard + secondCard;
+    firstCard = generateNumberBetween2and11();
+    secondCard = generateNumberBetween2and11();
+    sum = firstCard + secondCard;
 
     if (sum <= 20) {
         message = "Do you want to draw a new card? 😕"
