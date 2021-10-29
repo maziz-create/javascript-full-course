@@ -30,3 +30,7 @@ const startGame = () => {
     sumEl.textContent = sum ? "Sum: " + sum : "Sum:"
     cardsEl.textContent = firstCard ? `Cards: ${firstCard} ${secondCard}` : "Cards";
 }
+
+const newCard = () => {
+    console.log("Drawing a new card from the Deck!");
+}

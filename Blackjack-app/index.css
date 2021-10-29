@@ -19,4 +19,11 @@ button {
     color: #016f32;
     background-color: goldenrod;
     font-weight: bold;
+
+    /* centering */
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3px;
+    cursor: pointer;
 }
