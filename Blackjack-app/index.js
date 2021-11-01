@@ -1,6 +1,8 @@
 let number;
 const generateNumberBetween2and11 = () => {
     number = Math.floor(Math.random() * (13) + 1);
+    if (number == 1) return 11;
+    if (number > 10 && number < 14) return 10;
     return number;
 }
 
@@ -45,7 +47,7 @@ const renderGame = (maybeItIsCard) => {
             sum += maybeItIsCard;
         }
         writeCardsContent(cardsArray);
-        if (sum <= 39) writeSumContent();
+        if (sum <= 30) writeSumContent(); // 3 kart en fazla 30 yapar. 10+10+10
         return;
     }
     writeMessageContent();
