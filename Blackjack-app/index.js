@@ -5,6 +5,8 @@ let isAlive = true; //he is alive
 let messageEl = document.getElementById('message-el');
 let sumEl = document.getElementById('sum-el');
 let cardsEl = document.getElementById('cards-el');
+let startButton = document.getElementById('start-game');
+let newCardButton = document.getElementById('new-card');
 let firstCard, secondCard, sum;
 let cardsArray = [];
 
@@ -34,12 +36,8 @@ const renderGame = (maybeItIsCard) => {
         message = "You're out of the game! 😔";
         alert(message);
         isAlive = false; //he is dead
-        if (maybeItIsCard !== undefined) {
-            sum += maybeItIsCard;
-        }
         writeCardsContent(cardsArray);
-        if (sum <= 38) writeSumContent(); // 3 kart en fazla 30 yapar. 10+10+10
-        return;
+        if (sum <= 38) writeSumContent();
     }
     writeMessageContent();
     writeSumContent();
@@ -47,8 +45,17 @@ const renderGame = (maybeItIsCard) => {
 
 const newCard = () => {
     let card = generateNumberBetween1and10();
+
     if (isAlive) cardsArray.push(card);
+
     renderGame(card);
+    if (!isAlive) {
+        startButton.setAttribute('disabled', 'disabled');
+        startButton.style.opacity = .7;
+
+        newCardButton.setAttribute('disabled', 'disabled');
+        newCardButton.style.opacity = .7;
+    }
 }
 
 //generating random numbers
@@ -60,11 +67,10 @@ const generateNumberBetween1and10 = () => {
 }
 
 //HTMLElement.textContent functions
-
 const writeCardsContent = (arrayOfCards) => {
     cardsEl.textContent = firstCard
         ? `Cards: ${arrayOfCards.map((card) => card)}`
-        : "Cards";
+        : "Cards:";
 }
 
 const writeSumContent = () => {
