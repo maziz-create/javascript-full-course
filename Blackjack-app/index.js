@@ -1,19 +1,10 @@
 let number;
-const generateNumberBetween2and11 = () => {
-    number = Math.floor(Math.random() * (13) + 1);
-    if (number == 1) return 11;
-    if (number > 10 && number < 14) return 10;
-    return number;
-}
-
 let message = ""; //message for user
 let hasBlackJack = false; //he has not blackjack
 let isAlive = true; //he is alive
-
 let messageEl = document.getElementById('message-el');
 let sumEl = document.getElementById('sum-el');
 let cardsEl = document.getElementById('cards-el');
-
 let firstCard, secondCard, sum;
 let cardsArray = [];
 
@@ -24,8 +15,8 @@ const startGame = () => {
 const renderGame = (maybeItIsCard) => {
 
     if (maybeItIsCard === undefined) {
-        firstCard = generateNumberBetween2and11();
-        secondCard = generateNumberBetween2and11();
+        firstCard = generateNumberBetween1and10();
+        secondCard = generateNumberBetween1and10();
         cardsArray = [firstCard, secondCard];
         sum = firstCard + secondCard;
         writeCardsContent(cardsArray);
@@ -47,7 +38,7 @@ const renderGame = (maybeItIsCard) => {
             sum += maybeItIsCard;
         }
         writeCardsContent(cardsArray);
-        if (sum <= 30) writeSumContent(); // 3 kart en fazla 30 yapar. 10+10+10
+        if (sum <= 38) writeSumContent(); // 3 kart en fazla 30 yapar. 10+10+10
         return;
     }
     writeMessageContent();
@@ -55,9 +46,17 @@ const renderGame = (maybeItIsCard) => {
 }
 
 const newCard = () => {
-    let card = generateNumberBetween2and11();
+    let card = generateNumberBetween1and10();
     if (isAlive) cardsArray.push(card);
     renderGame(card);
+}
+
+//generating random numbers
+const generateNumberBetween1and10 = () => {
+    number = Math.floor(Math.random() * (13) + 1);
+    if (number == 1) return 11;
+    if (number > 10 && number < 14) return 10;
+    return number;
 }
 
 //HTMLElement.textContent functions
