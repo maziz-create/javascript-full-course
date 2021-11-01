@@ -1,6 +1,6 @@
 let number;
 const generateNumberBetween2and11 = () => {
-    number = Math.floor(Math.random() * (11) + 2);
+    number = Math.floor(Math.random() * (13) + 1);
     return number;
 }
 
