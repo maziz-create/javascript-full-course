@@ -45,7 +45,7 @@ const renderGame = (maybeItIsCard) => {
             sum += maybeItIsCard;
         }
         writeCardsContent(cardsArray);
-        if (sum <= 38) writeSumContent();
+        if (sum <= 39) writeSumContent();
         return;
     }
     writeMessageContent();
