@@ -41,11 +41,11 @@ const renderGame = (maybeItIsCard) => {
         message = "You're out of the game! 😔";
         alert(message);
         isAlive = false; //he is dead
-        if(maybeItIsCard !== undefined) {
+        if (maybeItIsCard !== undefined) {
             sum += maybeItIsCard;
         }
         writeCardsContent(cardsArray);
-        writeSumContent();
+        if (sum <= 38) writeSumContent();
         return;
     }
     writeMessageContent();
@@ -54,7 +54,7 @@ const renderGame = (maybeItIsCard) => {
 
 const newCard = () => {
     let card = generateNumberBetween2and11();
-    if (isAlive) cardsArray = [...cardsArray, card];
+    if (isAlive) cardsArray.push(card);
     renderGame(card);
 }
 
@@ -68,7 +68,10 @@ const writeCardsContent = (arrayOfCards) => {
 
 const writeSumContent = () => {
     sumEl.textContent = sum ? "Sum: " + sum : "Sum:";
-    sumEl.style.backgroundColor = sum >= 22 ? "red" : "transparent";
+    sumEl.style.backgroundColor =
+        sum >= 22 ? "red"
+            : sum == 21 ? "green"
+                : "transparent";
 }
 
 const writeMessageContent = () => {
