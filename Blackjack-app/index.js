@@ -13,45 +13,64 @@ let sumEl = document.getElementById('sum-el');
 let cardsEl = document.getElementById('cards-el');
 
 let firstCard, secondCard, sum;
+let cardsArray = [];
 
 const startGame = () => {
     renderGame();
 }
 
 const renderGame = (maybeItIsCard) => {
-    firstCard = generateNumberBetween2and11();
-    secondCard = generateNumberBetween2and11();
 
     if (maybeItIsCard === undefined) {
+        firstCard = generateNumberBetween2and11();
+        secondCard = generateNumberBetween2and11();
+        cardsArray = [firstCard, secondCard];
         sum = firstCard + secondCard;
-        cardsEl.textContent = firstCard ? `Cards: ${firstCard} ${secondCard}` : "Cards";
+        writeCardsContent(cardsArray);
     } else {
         sum += maybeItIsCard;
+        writeCardsContent(cardsArray);
     }
 
-    if (sum < 36) {
-        if (sum <= 20) {
-            message = "Do you want to draw a new card? 😕"
-        } else if (sum === 21) {
-            message = "Wohoo! You've got Blackjack! 🥳";
-            hasBlackJack = true; //he has blackjack
-        } else {
-            message = "You're out of the game! 😔";
-            isAlive = false; //he is dead
+    if (sum <= 20) {
+        message = "Do you want to draw a new card? 😕"
+    } else if (sum === 21) {
+        message = "Wohoo! You've got Blackjack! 🥳";
+        hasBlackJack = true; //he has blackjack
+    } else if (sum > 21) {
+        message = "You're out of the game! 😔";
+        alert(message);
+        isAlive = false; //he is dead
+        if(maybeItIsCard !== undefined) {
+            sum += maybeItIsCard;
         }
-    } else {
-        alert(`You have no right to use it because you're out of the game!`);
+        writeCardsContent(cardsArray);
+        writeSumContent();
         return;
     }
-
-    messageEl.textContent = message === "" ? "Want to play a round?" : message;
-    sumEl.textContent = sum ? "Sum: " + sum : "Sum:";
+    writeMessageContent();
+    writeSumContent();
 }
 
 const newCard = () => {
-    console.log("Drawing a new card from the Deck!");
-
     let card = generateNumberBetween2and11();
-
+    if (isAlive) cardsArray = [...cardsArray, card];
     renderGame(card);
+}
+
+//HTMLElement.textContent functions
+
+const writeCardsContent = (arrayOfCards) => {
+    cardsEl.textContent = firstCard
+        ? `Cards: ${arrayOfCards.map((card) => card)}`
+        : "Cards";
+}
+
+const writeSumContent = () => {
+    sumEl.textContent = sum ? "Sum: " + sum : "Sum:";
+    sumEl.style.backgroundColor = sum >= 22 ? "red" : "transparent";
+}
+
+const writeMessageContent = () => {
+    messageEl.textContent = message === "" ? "Want to play a round?" : message;
 }
